@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator Konten Visual Video</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Sistem Penerjemah Konten Visual Bercerita (Video)</h1>
+            <p>Unggah konten video bercerita Anda untuk diterjemahkan teksnya secara otomatis</p>
+        </header>
+
+        <div class="main-card">
+            <!-- Dropzone khusus Video -->
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" class="hidden-input" accept="video/*">
+                <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <p class="upload-text">Klik atau seret file video ke sini</p>
+                <p class="upload-subtext">Mendukung MP4, AVI, MOV (Disarankan durasi pendek 5-10 detik)</p>
+            </div>
+
+            <!-- Tampilan Hasil Video -->
+            <div id="result-section" class="result-grid hidden">
+                <div class="preview-box" style="grid-column: span 2;">
+                    <h3>Video Hasil Terjemahan Otomatis:</h3>
+                    <!-- Tag Video HTML untuk memutar langsung hasil olahan Python -->
+                    <video id="video-player" controls width="100%" style="border-radius: 8px; margin-top: 10px;">
+                        <source id="video-source" src="" type="video/mp4">
+                        Browser Anda tidak mendukung pemutar video.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading-box hidden">
+                <div class="spinner"></div>
+                <p>Sedang memproses video frame-by-frame & menempelkan subtitle... Mohon tunggu.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
